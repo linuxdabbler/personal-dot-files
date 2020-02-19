@@ -1,3 +1,6 @@
+! Get rid of the scroll bar in URxvt
+URxvt.scrollBar: false
+
 ! FONTS
 URxvt.font:xft:UbuntuMono:pixelsize=18
 URxvt.boldfont:xft:UbuntuMono-Bold:pixelsize=18
