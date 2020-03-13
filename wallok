@@ -8,11 +8,11 @@ DIR="/home/$USER/Pictures/wallpapers"
 
 # Command to Select wallpapers at random from the $DIR directory
 
-PIC=$(ls $DIR/*.png | shuf -n1)
+WAL=$(ls $DIR/*.png | shuf -n1)
 
 # Set lockscreen wallpaper
 
-cat $PIC > /home/$USER/Pictures/wallok.png
+cat $WAL > /home/$USER/Pictures/wallok.png
 
 # Set Desktop Wallpaper
 
