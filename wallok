@@ -17,3 +17,4 @@ cat $PIC > /home/$USER/Pictures/wallok.png
 # Set Desktop Wallpaper
 
 feh --bg-scale /home/$USER/Pictures/wallok.png
+
