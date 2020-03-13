@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Script to automatically change the wallpaper and lock screen in spectrwm
+
+# Directory Containing the Pictures
+
+DIR="/home/$USER/Pictures/wallpapers"
+
+# Command to Select wallpapers at random from the $DIR directory
+
+PIC=$(ls $DIR/*.png | shuf -n1)
+
+# Set lockscreen wallpaper
+
+cat $PIC > /home/$USER/Pictures/wallok.png
+
+# Set Desktop Wallpaper
+
+feh --bg-scale /home/$USER/Pictures/wallok.png
