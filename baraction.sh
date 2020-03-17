@@ -1,6 +1,6 @@
 #!/bin/sh
 # Example Bar Action Script for Linux.
-# Requires: acpi, iostat lm-sensors.
+# Requires: acpi, iostat, lm-sensors, aptitude.
 # Tested on: Debian 10
 #
 
@@ -11,13 +11,13 @@ print_date() {
 #	FORMAT="%a %b %d %R %Z %Y"
 	FORMAT="   %a %b %d       %R"
 	DATE=`date "+${FORMAT}"`
-	echo -n "${DATE}     "
+	echo -n "     ${DATE}     "
 }
 
 print_mem() {
 #	MEM=`/usr/bin/free -m | grep ^Mem: | sed -E 's/ +/ /g' | cut -d ' ' -f4`
 	MEM=$(free -h | awk '/Mem:/ {print $3 "/" $2}')
-	echo -n "Free RAM:  ${MEM}    "
+	echo -n "Free RAM:  ${MEM}    | "
 }
 
 _print_cpu() {
@@ -42,14 +42,21 @@ print_cpuspeed() {
 print_packages() {
 	Packages="$(apt list --installed | wc -l)"
 	
-	printf "Packages :  $Packages   "
+	printf "    Packages:  $Packages   | "
 }
+
+print_upgrades() {
+	Upgrades="$(aptitude search '~U' | wc -l)"
+
+	printf "    Upgrades:  $Upgrades  | "
+}
+
 
 print_kernel() {
 
 	Kernel="$(uname -sr)"
 
-	printf "  $Kernel   "
+	printf "    $Kernel   | "
 
 }	
 
@@ -57,7 +64,7 @@ print_cputemp() {
 
 	CPU="$(sensors | awk '/^Tctl:/ {print $2}')"
 
-	printf "  CPU Temp:  $CPU  "
+	printf "    CPU Temp:  $CPU  | "
 
 }
 
@@ -65,7 +72,7 @@ print_IP() {
 
 	IP="$(hostname -I | awk '{print $1}')"
 
-	printf " $IP  "
+	printf "    LAN: $IP  | "
 }
 
 
@@ -125,6 +132,7 @@ while :; do
 #	print_cpuspeed
 	print_cputemp
 	print_packages
+	print_upgrades
 	print_kernel
 	print_IP
 	print_date
