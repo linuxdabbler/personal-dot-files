@@ -75,7 +75,13 @@ print_IP() {
 	printf "    LAN: $IP  | "
 }
 
+print_vpn() {
 
+	vpn="$(ip a | grep tun0 | grep inet | wc -l)"
+	
+	printf " VPN Connections: $vpn    | "
+}
+    
 print_bat() {
 	AC_STATUS="$3"
 	BAT_STATUS="$6"
