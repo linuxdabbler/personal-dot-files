@@ -17,7 +17,7 @@ print_date() {
 print_mem() {
 #	MEM=`/usr/bin/free -m | grep ^Mem: | sed -E 's/ +/ /g' | cut -d ' ' -f4`
 	MEM=$(free -h | awk '/Mem:/ {print $3 "/" $2}')
-	echo -n "Free RAM:  ${MEM}    | "
+	echo -n "| Free RAM:  ${MEM}   | "
 }
 
 _print_cpu() {
@@ -40,23 +40,23 @@ print_cpuspeed() {
 }
 
 print_packages() {
-	Packages="$(apt list --installed | wc -l)"
+	Packages="$(apt list --installed | wc -l || pacaman -Q | wc-l)"
 	
-	printf "    Packages:  $Packages   | "
+	printf "  Packages:  $Packages  | "
 }
 
 print_upgrades() {
-	Upgrades="$(aptitude search '~U' | wc -l)"
+	Upgrades="$(aptitude search '~U' | wc -l || pacman -Qu)"
 
-	printf "    Upgrades:  $Upgrades  | "
+	printf "  Upgrades:  $Upgrades  | "
 }
 
 
 print_kernel() {
 
-	Kernel="$(uname -sr)"
+	kernel="$(uname -r | sed 's/-amd64//')"
 
-	printf "    $Kernel   | "
+	printf "  Kernel: $kernel  | "
 
 }	
 
@@ -64,7 +64,7 @@ print_cputemp() {
 
 	CPU="$(sensors | awk '/^Tctl:/ {print $2}')"
 
-	printf "    CPU Temp:  $CPU  | "
+	printf "  CPU Temp:  $CPU | "
 
 }
 
@@ -72,16 +72,32 @@ print_IP() {
 
 	IP="$(hostname -I | awk '{print $1}')"
 
-	printf "    LAN: $IP  | "
+	printf "  LAN: $IP | "
 }
 
 print_vpn() {
 
 	vpn="$(ip a | grep tun0 | grep inet | wc -l)"
 	
-	printf " VPN Connections: $vpn    | "
+	printf " VPN Connections: $vpn   | "
 }
-    
+   
+
+print_vol() {
+
+	vol="$(amixer -D pulse get Master | grep Right | grep -o "[0-9]*%\|\[on\]|[off\]")"
+
+	 echo -n " Vol:  $vol  | "
+}
+
+
+print_net() {
+
+	net="$(cat /sys/class/net/enp6s0/operstate)"
+
+	printf " Network $net  |  "
+}
+
 print_bat() {
 	AC_STATUS="$3"
 	BAT_STATUS="$6"
@@ -140,10 +156,16 @@ while :; do
 	print_packages
 	print_upgrades
 	print_kernel
+	print_net
+	print_vpn
 	print_IP
+	print_vol
 	print_date
 #	print_bat $ACPI_DATA
 	echo ""
-	I=$(( ( ${I} + 1 ) % 11 ))
+#	I=$(( ( ${I} + 1 ) % 11 ))
 	sleep 1
 done
+
+
+
