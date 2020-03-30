@@ -15,11 +15,15 @@ cp ~/.spectrwm.conf ~/.config/spectrwm.conf.bak || sudo cat /etc/spectrwm.conf >
 # Cat out spectrwm.conf to the home folder
 cat spectrwm.conf > ~/.spectrwm.conf
 
-# Make auto wallpaper changer script "wallok" executable
-chmod +x wallok
+# Make scripts executable
+chmod +x wal
+chmod +x lok
+chmod +x louder
+chmod +x quieter
+chmod +x hush
 
 # Move wallok script to a directory in the default PATH
-sudo mv wallok /usr/local/bin/
+sudo mv wal /usr/local/bin/
 
 cp -r wallpapers ~/Pictures/ || mkdir ~/Pictures && cp -r wallpapers ~/Pictures
 
