@@ -1,0 +1,9 @@
+#!/bin/sh
+
+scrot -m ~/Pictures/wallok/lok.png &&\
+
+convert ~/Pictures/wallok/lok.png -blur 0x5 ~/Pictures/wallok/lock.png &&\
+
+i3lock -i ~/Pictures/wallok/lock.png
+
+rm ~/Pictures/wallok/lok.png
