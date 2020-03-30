@@ -12,9 +12,9 @@ WAL=$(ls $DIR/*.png | shuf -n1)
 
 # Set lockscreen wallpaper
 
-cat $WAL > /home/$USER/Pictures/wallok.png
+cat $WAL > /home/$USER/Pictures/wallok/wal.png
 
 # Set Desktop Wallpaper
 
-feh --bg-scale /home/$USER/Pictures/wallok.png
+feh --bg-scale /home/$USER/Pictures/wallok/wal.png
 
