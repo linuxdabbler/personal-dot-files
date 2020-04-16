@@ -1,95 +1,91 @@
-#!/bin/sh
+#!/bin/bash
 # Example Bar Action Script for Linux.
 # Requires: acpi, iostat, lm-sensors, aptitude.
-# Tested on: Debian 10
-#
+# Tested on: Debian Testing
+# This config can be found on github.com/linuxdabbler
 
-print_date() {
-	# The date is printed to the status bar by default.
-	# To print the date through this script, set clock_enabled to 0
-	# in spectrwm.conf.  Uncomment "print_date" below.
-	FORMAT="   %a %b %d       %R"
-	DATE=`date "+${FORMAT}"`
-	echo -n "     ${DATE}     "
+############################## 
+#	    DATE
+##############################
+
+date() {
+	  date="$(date +"%a, %b %d %R")"
+	    echo -e " $dte "
+    }
+
+############################## 
+#	    DISK
+##############################
+
+hdd() {
+	  hdd="$(df -h /home | grep /dev | awk '{print $3 " / " $5}')"
+	    echo -e " HDD: $hdd "
+    }
+##############################
+#	    RAM
+##############################
+
+mem() {
+	mem="$(free -h | awk '/Mem:/ {printf $3 "/" $2}')"
+	echo -e " Mem: $mem "
 }
+##############################	
+#	    CPU
+##############################
 
-print_mem() {
-	MEM=$(free -h | awk '/Mem:/ {print $3 "/" $2}')
-	echo -n "Free RAM: ${MEM} | "
+cpu() {
+	  read cpu a b c previdle rest < /proc/stat
+	    prevtotal=$((a+b+c+previdle))
+	      sleep 0.5
+	        read cpu a b c idle rest < /proc/stat
+		  total=$((a+b+c+idle))
+		    cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+		      echo -e " CPU: $cpu% "
+	      }
+##############################
+#	    VOLUME
+##############################
+
+vol() {
+	vol="$(amixer -D pulse get Master | awk -F'[][]' 'END{ print $4":"$2 }')"
+	echo -e " Volume $vol "
 }
+##############################
+#	    Packages
+##############################
 
-print_packages() {
-	Packages="$(apt list --installed | wc -l || pacaman -Q | wc-l)"
-	
-	printf " Packages: $Packages | "
+pkgs() {
+	pkgs="$(apt list --installed | wc -l)"
+	echo -e " Packages: $pkgs "
 }
+##############################
+#	    UPGRADES
+##############################
 
-print_upgrades() {
-	Upgrades="$(aptitude search '~U' | wc -l || pacman -Qu)"
-
-	printf " Upgrades: $Upgrades | "
+upgrades() {
+	upgrades="$(aptitude search '~U' | wc -l)"
+	echo -e " Upgrades: $upgrades "
 }
+##############################
+#	    VPN
+##############################
 
-
-print_kernel() {
-
-	kernel="$(uname -r | sed 's/-amd64//')"
-
-	printf " Kernel: $kernel | "
-
-}	
-
-print_cputemp() {
-
-	CPU="$(sensors | awk '/^Tctl:/ {print $2}')"
-
-	printf " CPU Temp: $CPU | "
-
-}
-
-print_IP() {
-
-	IP="$(hostname -I | awk '{print $1}')"
-
-	printf " LAN: $IP | "
-}
-
-print_vpn() {
-
+vpn() {
 	vpn="$(ip a | grep tun0 | grep inet | wc -l)"
-	
-	printf " VPN Connections: $vpn | "
-}
-   
-
-print_vol() {
-
-	vol="$(amixer -D pulse get Master | grep Right | grep -o "[0-9]*%\|\[on\]|[off\]")"
-
-	 echo -n " Vol:  $vol | "
+	echo -e " VPN Connections: $vpn "
 }
 
 
-print_net() {
 
-	net="$(cat /sys/class/net/enp6s0/operstate)"
+      SLEEP_SEC=1
+      #loops forever outputting a line every SLEEP_SEC secs
+      while :; do     
+	#This bar is for spectrwm 3.3+
+		echo "+@fg=5;$(cpu) +@fg=0;| +@fg=2;$(mem) +@fg=0;| +@fg=4;$(pkgs) +@fg=0;| +@fg=1;$(hdd) +@fg=0;| +@fg=3;$(vpn)+@fg=0;| +@fg=1;$(vol) +@fg=0;|"
+	#This bar is for spectrwm 3.2 and lower
+		#echo "$(cpu) | $(mem) | $(pkgs) | $(hdd) | $(vpn) | $(vol) | $(date)"
+		sleep $SLEEP_SEC
+		done
 
-	printf " Network $net | "
-}
-
-while :; do
-	print_mem
-	print_cputemp
-	print_packages
-	print_upgrades
-	print_kernel
-	print_net
-	print_vpn
-	print_IP
-	print_vol
-	print_date
-	echo ""
-	sleep 1
-done
 
 
