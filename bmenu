@@ -1,0 +1,4 @@
+#!/bin/sh
+
+touch ~/.config/bookmarks
+cat ~/.config/bookmarks | dmenu -i -l 7 | xargs firefox
