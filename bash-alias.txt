@@ -1,0 +1,15 @@
+## Bash Aliases
+
+alias ..='cd ..'
+alias q='exit'
+alias v='vim'
+alias h='cd ~/'
+alias C='clear'
+alias c='cd ~/.config'
+alias D='cd ~/Downloads'
+alias d='cd ~/documents'
+alias dangit='sudo !!'
+alias pk='sudo pkill'
+alias bashrc='vim ~/.bashrc'
+alias nasbox='ssh timelord@192.168.0.19'
+
