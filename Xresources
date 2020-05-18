@@ -1,46 +1,39 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcdfilter
+
+Xterm*renderFont: true
+Xterm*faceName: xft:Monospace
+Xterm*faceSize: 14
+Xterm*urf8: 2
+Xterm*locale: true
+
+Xterm.vt100.translations: #override \n\
+	Ctrl <Key> j; smaller-vt-font() \n\
+	Ctrl <Key> k: larger-vt-font()
+
+! scrollback lines
+Xterm*savelines: 2000
+
+! double-click to select whole URLs
+Xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! Xterm Color theme
+Xterm*foreground: #f8f8f2
+Xterm*background: #282a36
+Xterm*cursorColor: #f8f8f2
+
+
 ! Get rid of the scroll bar in URxvt
 URxvt.scrollBar: false
 
 ! FONTS
 URxvt.font:xft:UbuntuMono:pixelsize=18
 URxvt.boldfont:xft:UbuntuMono-Bold:pixelsize=18
-
-! special
-!*.foreground:   #c7ccd1
-!*.background:   #1c2023
-!*.cursorColor:  #c7ccd1
-
-! black
-!*.color0:       #1c2023
-!*.color8:       #747c84
-
-! red
-!*.color1:       #c7ae95
-!*.color9:       #c7ae95
-
-! green
-!*.color2:       #95c7ae
-!*.color10:      #95c7ae
-
-! yellow
-!*.color3:       #aec795
-!*.color11:      #aec795
-
-! blue
-!*.color4:       #ae95c7
-!*.color12:      #ae95c7
-
-! magenta
-!*.color5:       #c795ae
-!*.color13:      #c795ae
-
-! cyan
-!*.color6:       #95aec7
-!*.color14:      #95aec7
-
-! white
-!*.color7:       #c7ccd1
-!*.color15:      #f3f4f5
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
@@ -63,42 +56,25 @@ URxvt.boldfont:xft:UbuntuMono-Bold:pixelsize=18
 *.color15:    #E6E6E6
 
 ! NORD TERMINAL THEME
-!#define nord0 #2E3440
-!#define nord1 #3B4252
-!#define nord2 #434C5E
-!#define nord3 #4C566A
-!#define nord4 #D8DEE9
-!#define nord5 #E5E9F0
-!#define nord6 #ECEFF4
-!#define nord7 #8FBCBB
-!#define nord8 #88C0D0
-!#define nord9 #81A1C1
-!#define nord10 #5E81AC
-!#define nord11 #BF616A
-!#define nord12 #D08770
-!#define nord13 #EBCB8B
-!#define nord14 #A3BE8C
-!#define nord15 #B48EAD
-
-!*.foreground:   nord4
-!*.background:   nord0
-!*.cursorColor:  nord4
+!*.foreground:   #D8DEE9
+!*.background:   #2E3440
+!*.cursorColor:  #D8DEE9
 !*fading: 35
-!*fadeColor: nord3
+!*fadeColor: #4C556A
 
-!*.color0: nord1
-!*.color1: nord11
-!*.color2: nord14
-!*.color3: nord13
-!*.color4: nord9
-!*.color5: nord15
-!*.color6: nord8
-!*.color7: nord5
-!*.color8: nord3
-!*.color9: nord11
-!*.color10: nord14
-!*.color11: nord13
-!*.color12: nord9
-!*.color13: nord15
-!*.color14: nord7
-!*.color15: nord6
+!*.color0: #3B4252
+!*.color1: #BF616A
+!*.color2: #A3BE8C
+!*.color3: #EBCB8B
+!*.color4: #81A1C1
+!*.color5: #B48EAD
+!*.color6: #88C0D0
+!*.color7: #E5E9F0
+!*.color8: #4C566A
+!*.color9: #BF616A
+!*.color10: #A3BE8C
+!*.color11: #EBCB8B
+!*.color12: #81A1C1
+!*.color13: #B48EAD
+!*.color14: #8FBCBB
+!*.color15: #ECEFF4
