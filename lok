@@ -1,4 +1,5 @@
 #!/bin/sh
+# requires scrot imagemagick and i3lock
 
 scrot -m ~/.config/lok.png &&\
 
