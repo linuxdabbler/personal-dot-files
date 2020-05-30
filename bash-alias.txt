@@ -1,15 +1,20 @@
 ## Bash Aliases
 
+alias bsh='. ~/.bashrc'
 alias ..='cd ..'
 alias q='exit'
 alias v='vim'
 alias h='cd ~/'
-alias C='clear'
-alias c='cd ~/.config'
-alias D='cd ~/Downloads'
-alias d='cd ~/documents'
-alias dangit='sudo !!'
+alias c='clear'
+alias C='cd ~/.config'
+alias d='cd ~/Downloads'
+alias D='cd ~/documents'
+alias dangit='sudo "$BASH" -c "$(history -p !!)"'  # eqivalent to sudo !!
 alias pk='sudo pkill'
 alias bashrc='vim ~/.bashrc'
 alias nasbox='ssh timelord@192.168.0.19'
-
+alias e='cd /etc'
+alias vdwm='cd ~/suckless/dwm && vim config.h'
+alias vdm='cd ~/suckless/dmenu && vim config.h'
+alias vst='cd ~/suckless/st && vim config.h'
+alias bashrc='vim ~/.bashrc'
