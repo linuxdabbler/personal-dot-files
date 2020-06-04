@@ -92,7 +92,7 @@ temp() {
       while :; do     
 	#This bar is for spectrwm 3.3+
 #    echo "+@fg=5;$(cpu) +@fg=0;| +@fg=2;$(mem) +@fg=0;| +@fg=4;$(pkgs) +@fg=0;| +@fg=1;$(hdd) +@fg=0;| +@fg=3;$(vpn)+@fg=0;| +@fg=1;$(vol) +@fg=0;|+@fg=2; $(weather) $(temp)   +@fg=0;"
-	#This bar is for spectrwm 3.2 and lower
+	#This bar has icons and requires font-awesome package to be installed and declared as a secondary font in spectrwm.config
     echo "+@fn=1; +@fn=0;$(cpu) |  +@fn=1; +@fn=0;$(mem) |  +@fn=1;+@fn=0;$(pkgs) |  +@fn=1;+@fn=0;$(upgrades) |   +@fn=1;+@fn=0;$(hdd) | VPN  +@fn=1;+@fn=0;$(vpn) |  +@fn=1;+@fn=0;$(vol) | $(weather) $(temp)"
 		sleep $SLEEP_SEC
 		done
