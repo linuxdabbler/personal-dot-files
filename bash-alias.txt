@@ -1,3 +1,6 @@
+## make delete key work in st terminal
+tput smkx
+
 ## Archive extraction
 
 ex ()
