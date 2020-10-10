@@ -1,3 +1,9 @@
+## exports
+export EDITOR=vim
+export PATH
+export LANG=en_US.UTF-8
+export HISTCONTROL=ingnoreboth
+
 ## make delete key work in st terminal
 tput smkx
 
