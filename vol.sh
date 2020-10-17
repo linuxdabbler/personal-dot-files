@@ -4,7 +4,7 @@ VOLONOFF="$(amixer -D pulse get Master | grep Left: | sed 's/[][]//g' | awk '{pr
 VOL="$(amixer -D pulse get Master | grep Left: | sed 's/[][]//g' | awk '{print $5}')"
 
 VOLICON=""
-MUTEICON=""
+MUTEICON="婢"
 
 
 if [ "$VOLONOFF" = "on" ]; then
