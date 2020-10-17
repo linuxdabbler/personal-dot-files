@@ -32,8 +32,8 @@ Xterm*cursorColor: #f8f8f2
 URxvt.scrollBar: false
 
 ! FONTS
-URxvt.font:xft:UbuntuMono:pixelsize=18
-URxvt.boldfont:xft:UbuntuMono-Bold:pixelsize=18
+URxvt.font:xft:Monospace:pixelsize=14
+URxvt.boldfont:xft:Monospace-Bold:pixelsize=14
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
