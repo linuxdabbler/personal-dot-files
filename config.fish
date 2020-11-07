@@ -13,14 +13,14 @@ set TERM "xterm-256color"   # Sets the terminal type
 set EDITOR "vim"            # Sets $EDITOR to vim
 set VISUAL "geany"          # Sets $VISUAL to geany for GUI Editor
 
-# VIM mode keybindings
+### VIM mode keybindings ###
 function fish_user_key_bindings
     fish_vi_key_bindings
 end
 
 # End of VIM Keybindings
 
-# Prompt configuration
+### Prompt configuration ###
 function fish_prompt --description 'Screen Savvy prompt'
     if test -z "$WINDOW"
         printf '%s%s@%s%s%s%s%s> ' (set_color yellow) $USER (set_color purple) (prompt_hostname) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
@@ -31,7 +31,10 @@ end
 
 #  End of Prompt configuration
 
+### CUSTOM FUNCTIONS ###
+
 # Custom Function for a sudo !! replacement
+
 function sudo --description "replacement for 'sudo !!' command to run last command using sudo"
     if test "$argv" = !!
     eval command sudo $history[1]
@@ -42,35 +45,71 @@ end
 
 # Endo of sudo !! function
 
-# Aliases
+# Custom function for line counting
+function line-count
+    wc -l | string trim
+end
 
-alias df='df -h'
-alias free='free -g'
-alias memhogs='ps auxf | sort -nr -k 4 | head -10'
-alias cpuhogs='ps auxf | sort -nr -k 3 | head -10'
-alias reboot='sudo reboot'
-alias shutdown='sudo shutdown now'
-alias virtnetwork='sudo virsh net-start default'
-alias h='cd ~/'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias v='vim'
-alias ll='ls -l'
-alias la='ls -A'
-alias ls.='ls -A | egrep "^\."'
-alias merge='xrdb -merge ~/.Xresources'
-alias q='exit'
-alias d='cd ~/Downloads'
-alias doc='cd ~/Documents'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-alias .c='cd ~/.config'
-alias pk='sudo pkill'
-alias nasbox='ssh timelord@192.168.0.19'
+# Custom function for counting installed programs
+function count-installed
+    dpkg -l | grep -c '^ii' | string trim
+end
 
-# Screen fetcher
-dev-fetch
+# Custom function for listing installed programs
+function list-installed
+    apt list --installed | string trim
+end
+
+# Custom function for listing ram hogs
+function memhogs
+    ps axh -o cmd:15,%mem --sort=-%mem | head | string trim
+end
+
+# Custom function for listing cpu hogs
+function cpuhogs
+    ps axh -o cmd:15,%cpu --sort=-%cpu | head
+end
+
+# Function to find resolutions of monitors
+function resolution
+    xrandr | grep \* | sed 's/59.95\*+//g'
+end
+
+# Function to print percent used hdd space of home folder
+function hdd
+    df -h /home | grep /dev | awk '{print $3 "/" $5}'
+end
+
+# Function to see available storage in home folder
+function avail
+    df -h /home | grep /dev/ | awk '{print $4}'
+end
+
+### Abbreviations  ###
+
+abbr df 'df -h'
+abbr free 'free -g'
+abbr reboot 'sudo reboot'
+abbr shutdown 'sudo shutdown now'
+abbr virtnetwork 'sudo virsh net-start default'
+abbr h 'cd ~/'
+abbr c 'clear'
+abbr .. 'cd ..'
+abbr ... 'cd ../..'
+abbr v 'vim'
+abbr ll 'ls -l'
+abbr la 'ls -A'
+abbr ls. 'ls -A | egrep "^\."'
+abbr merge 'xrdb -merge ~/.Xresources'
+abbr q 'exit'
+abbr d 'cd ~/Downloads'
+abbr doc 'cd ~/Documents'
+abbr grep 'grep --color=auto'
+abbr egrep 'egrep --color=auto'
+abbr fgrep 'fgrep --color=auto'
+abbr cp 'cp -i'
+abbr mv 'mv -i'
+abbr rm 'rm -i'
+abbr .c 'cd ~/.config'
+abbr pk 'sudo pkill'
+abbr nasbox 'ssh timelord@192.168.0.19'
