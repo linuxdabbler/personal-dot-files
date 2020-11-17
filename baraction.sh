@@ -1,7 +1,7 @@
 #!/bin/bash
 # Example Bar Action Script for Linux.
 # Requires: acpi, iostat, lm-sensors, aptitude.
-# Tested on: Debian Testing
+# Tested on: Debian Buster(with newest spectrwm built from source), Debian Bullseye, Devuan Chimaera, Devuan Ceres
 # This config can be found on github.com/linuxdabbler
 
 ############################## 
@@ -17,8 +17,14 @@ hdd() {
 ##############################
 
 mem() {
-	mem="$(free -h | awk '/Mem:/ {printf $3 "/" $2}')"
-	echo -e " $mem"
+used="$(free | grep Mem: | awk '{print $3}')"
+total="$(free | grep Mem: | awk '{print $2}')"
+
+totalh="$(free -h | grep Mem: | awk '{print $2}' | sed 's/Gi/G/')"
+
+ram="$(( 200 * $used/$total - 100 * $used/$total ))% / $totalh "
+
+echo $ram
 }
 ##############################	
 #	    CPU
@@ -46,7 +52,7 @@ vol() {
 ##############################
 
 pkgs() {
-	pkgs="$(apt list --installed | wc -l)"
+	pkgs="$(dpkg -l | grep -c ^i)"
 	echo -e " $pkgs"
 }
 ##############################
@@ -62,8 +68,13 @@ upgrades() {
 ##############################
 
 vpn() {
-	vpn="$(ip a | grep tun0 | grep inet | wc -l)"
-	echo -e " $vpn"
+	state="$(ip a | grep tun0 | grep inet | wc -l)"
+	
+if [ $state = 1 ]; then
+    echo "on"
+else
+    echo "off"
+fi
 }
 ## WEATHER
 weather() {
@@ -77,11 +88,45 @@ temp() {
 	echo " $tmp"
 }
 
+## BATTERY
+bat() {
+batstat="$(cat /sys/class/power_supply/BAT0/status)"
+battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+    if [ $batstat = 'Unknown' ]; then
+    batstat=""
+    elif [[ $battery -ge 5 ]] && [[ $battery -le 19 ]]; then
+    batstat=""
+    elif [[ $battery -ge 20 ]] && [[ $battery -le 39 ]]; then
+    batstat=""
+    elif [[ $battery -ge 40 ]] && [[ $battery -le 59 ]]; then
+    batstat=""
+    elif [[ $battery -ge 60 ]] && [[ $battery -le 79 ]]; then
+    batstat=""
+    elif [[ $battery -ge 80 ]] && [[ $battery -le 95 ]]; then
+    batstat=""
+    elif [[ $battery -ge 96 ]] && [[ $battery -le 100 ]]; then
+    batstat=""
+fi
+
+echo "$batstat  $battery %"
+}
+
+network() {
+wire="$(ip a | grep eth0 | grep inet | wc -l)"
+wifi="$(ip a | grep wlan | grep inet | wc -l)"
+
+if [ $wire = 1 ]; then 
+    echo " "
+elif [ $wifi = 1 ]; then
+    echo " "
+else 
+    echo "睊 "
+fi
+}
 
       SLEEP_SEC=2
       #loops forever outputting a line every SLEEP_SEC secs
       while :; do     
-    echo "$(cpu)| $(mem)| $(pkgs)| $(hdd)|嬨 $(vpn)| $(vol)|$(weather) $(temp)|"
+    echo "$(cpu)| $(mem)| $(pkgs)|﯁ $(upgrades)| $(hdd)| $(vpn)| $(vol)|$(bat)|$(weather) $(temp)| $(network)|"
 		sleep $SLEEP_SEC
 		done
-
