@@ -1,0 +1,14 @@
+#!/bin/bash
+bar=/home/$USER/.config/baraction.sh
+config=/home/$USER/.spectrwm.conf
+yad --form --undecorated --borders=10 --geometry=200x400-1135+30 --title="quick-start" --skip-taskbar --timeout=10\
+	--image=/usr/share/ldvuan/images/dev-logo.png --image-on-top \
+	--field="  Firefox!firefox!Launch Firefox":fbtn "firefox-esr" \
+	--field="  PCmanFM!thunar!Launch PCmanFM":fbtn "pcmanfm" \
+	--field="  Terminal!st!Launch st":fbtn "st" \
+	--field="  Pavucontrol!pavucontrol!Launch pavucontrol":fbtn "pavucontrol" \
+	--field="  Connman!network_local!Launch cmst":fbtn "cmst" \
+    --field="  Lxappearance!applications-development!Launch lxappearance":fbtn "lxappearance" \
+    --field="  Edit Config!preferences-desktop-keyboard!edit spectrwm.conf":fbtn "st -e vim $config" \
+    --field="  Edit Bar!preferences-desktop-keyboard!edit baraction.sh":fbtn "st -e vim $bar"
+	--button="close!gtk-close!close window" --buttons-layout=center \
