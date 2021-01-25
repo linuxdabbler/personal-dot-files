@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# icons depend on nerdfonts being installed
 cpu() {
       read cpu a b c previdle rest < /proc/stat
         prevtotal=$((a+b+c+previdle))
