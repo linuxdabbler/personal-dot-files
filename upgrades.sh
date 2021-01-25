@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# icons depend on nerdfonts being installed
 upgrades () {
     upgrds="$(aptitude search '~U' | wc -l)"
     echo " $upgrds"
