@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#icons depend on nerdfonts being installed
 mem() {
 used="$(free | grep Mem: | awk '{print $3}')"
 total="$(free | grep Mem: | awk '{print $2}')"
