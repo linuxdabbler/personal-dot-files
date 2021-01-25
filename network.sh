@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# icons depend on nerdfonts being installed
 hostname="${HOSTNAME:-${hostname:-$(hostname)}}"
 network() {
 wire="$(ip a | grep 'eth0\|enp' | grep inet | wc -l)"
