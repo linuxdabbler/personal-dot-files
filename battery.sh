@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# icons depend on nerdfonts being installed
 bat() {
 	batstat="$(cat /sys/class/power_supply/BAT0/status)"
 	battery="$(cat /sys/class/power_supply/BAT0/capacity)"
