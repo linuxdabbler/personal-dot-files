@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#icons depend on nerdfonts being installed
 hdd() {
       hdd="$(df -h /home | grep /dev | awk '{print $4}' | sed 's/G/Gb/')"
         echo -e " $hdd"
