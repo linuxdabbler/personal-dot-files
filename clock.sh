@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# icons depend on nerdfonts being installed
 clock=$(date '+%I')
 
 case "$clock" in
