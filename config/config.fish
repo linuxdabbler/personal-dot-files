@@ -10,7 +10,7 @@ set -U fish_user_paths $fish_user_paths $HOME/bin
 
 set fish_greeting           # Turns off the intro message when pulling up fish shell
 set TERM "xterm-256color"   # Sets the terminal type
-set EDITOR "vim"            # Sets $EDITOR to vim
+set EDITOR "nvim"            # Sets $EDITOR to vim
 set VISUAL "geany"          # Sets $VISUAL to geany for GUI Editor
 
 ### VIM mode keybindings ###
@@ -87,16 +87,17 @@ end
 
 ### Abbreviations  ###
 
+abbr sai='sudo apt install'
+abbr sainir='sudo apt install --no-install-recommends'
 abbr df 'df -h'
 abbr free 'free -g'
 abbr reboot 'sudo reboot'
-abbr shutdown 'sudo shutdown now'
 abbr virtnetwork 'sudo virsh net-start default'
 abbr h 'cd ~/'
 abbr c 'clear'
 abbr .. 'cd ..'
 abbr ... 'cd ../..'
-abbr v 'vim'
+abbr v 'nvim'
 abbr ll 'ls -l'
 abbr la 'ls -A'
 abbr ls. 'ls -A | egrep "^\."'
@@ -112,4 +113,6 @@ abbr mv 'mv -i'
 abbr rm 'rm -i'
 abbr .c 'cd ~/.config'
 abbr pk 'sudo pkill'
+abbr vdwm 'cd ~/.local/src/dwm && vim config.def.h'
+abbr vst 'cd ~/.local/src/st && vim config.def.h'
 abbr nasbox 'ssh timelord@192.168.0.19'
