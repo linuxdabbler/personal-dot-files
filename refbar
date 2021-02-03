@@ -1,6 +1,0 @@
-#!/bin/sh
-
-#Refresh DWM status bar
-#Kill Sleep in bar script
-
-kill "$(pstree -lp | grep -- -dwmbar\([0-9] | sed "s/.*sleep(\([0-9]\+\)).*/\1/")"
