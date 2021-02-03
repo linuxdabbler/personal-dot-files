@@ -1,0 +1,80 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcdfilter
+
+Xterm*renderFont: true
+Xterm*faceName: xft:Monospace
+Xterm*faceSize: 14
+Xterm*urf8: 2
+Xterm*locale: true
+
+Xterm.vt100.translations: #override \n\
+	Ctrl <Key> j; smaller-vt-font() \n\
+	Ctrl <Key> k: larger-vt-font()
+
+! scrollback lines
+Xterm*savelines: 2000
+
+! double-click to select whole URLs
+Xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! Xterm Color theme
+Xterm*foreground: #f8f8f2
+Xterm*background: #282a36
+Xterm*cursorColor: #f8f8f2
+
+
+! Get rid of the scroll bar in URxvt
+URxvt.scrollBar: false
+
+! FONTS
+URxvt.font:xft:Monospace:pixelsize=14
+URxvt.boldfont:xft:Monospace-Bold:pixelsize=14
+
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+
+! NORD TERMINAL THEME
+!*.foreground:   #D8DEE9
+!*.background:   #2E3440
+!*.cursorColor:  #D8DEE9
+!*fading: 35
+!*fadeColor: #4C556A
+
+!*.color0: #3B4252
+!*.color1: #BF616A
+!*.color2: #A3BE8C
+!*.color3: #EBCB8B
+!*.color4: #81A1C1
+!*.color5: #B48EAD
+!*.color6: #88C0D0
+!*.color7: #E5E9F0
+!*.color8: #4C566A
+!*.color9: #BF616A
+!*.color10: #A3BE8C
+!*.color11: #EBCB8B
+!*.color12: #81A1C1
+!*.color13: #B48EAD
+!*.color14: #8FBCBB
+!*.color15: #ECEFF4
