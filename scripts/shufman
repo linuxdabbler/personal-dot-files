@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ls /usr/share/man/man1 | sed 's/.gz//g' | shuf -n1 | xargs man

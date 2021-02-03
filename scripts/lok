@@ -1,0 +1,10 @@
+#!/bin/sh
+# requires scrot imagemagick and i3lock
+
+scrot -m ~/.config/lok.png &&\
+
+convert ~/.config/lok.png -blur 0x5 ~.config/lock.png &&\
+
+i3lock -i ~.config/lock.png
+
+rm ~/.config/lok.png

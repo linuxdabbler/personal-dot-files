@@ -1,0 +1,80 @@
+#!/bin/sh
+dte(){
+        dte="$(date +"%a, %b %d %R")"
+        echo "$dte"
+}
+
+hdd(){
+        hdd="$(df -h /home | grep dev | awk '{print$3, " "  $5}')"
+        echo "HDD: $hdd"
+}
+
+mem(){
+        mem="$(free -h | awk '/Mem:/ {printf $3 " / " $2}')"
+        echo "Mem: $mem"
+}
+
+cpu() {
+    read cpu a b c previdle rest < /proc/stat
+      prevtotal=$((a+b+c+previdle))
+        sleep 0.5
+          read cpu a b c idle rest < /proc/stat
+            total=$((a+b+c+idle))
+              cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
+                echo " CPU: $cpu% "
+}
+
+pkgs(){
+        pkgs="$(apt list --installed | wc -l)"
+        echo "Packages: $pkgs"
+}
+
+upgrades(){
+        upgrades="$(aptitude search '~U' | wc -l)"
+        echo "Upgrades: $upgrades"
+}
+
+vpn(){
+        vpn="$(ip a | grep tun0 | grep inet | wc -l)"
+        echo "VPN Connections: $vpn"
+}
+
+vol(){
+	vol="$(amixer -D pulse get Master | awk -F'[][]' 'END{print $4":"$2}')"
+	echo "Volume $vol"
+}
+
+kernel(){
+	kernel="$(uname -sr | sed "s/-amd64//g")"
+	echo $kernel
+}
+
+weather() {
+	wthr="$(sed 20q ~/.config/weather.txt | grep value | awk '{print $2 $3}' | sed 's/"//g')"
+	echo " $wthr"
+}
+
+temp() {
+	tmp="$(grep temp_F ~/.config/weather.txt | awk '{print $2}' | sed 's/"//g' | sed 's/,/ F/g')"
+	echo " $tmp"
+}
+
+bat() {
+	battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+	echo "$battery %"
+}
+
+batstat() {
+	bstat="$(cat /sys/class/power_supply/BAT0/status)"
+	echo "$bstat"
+}
+
+status(){
+	echo "$(cpu) | $(mem) | $(kernel)| $(pkgs) | $(upgrades) | $(hdd) | $(vpn) | $(vol) | $(dte)"
+}
+
+
+while true; do
+	xsetroot -name "$(status)"
+	sleep 30
+done
