@@ -1,5 +1,6 @@
 ## exports
-export EDITOR=vim
+export EDITOR="nvim"
+export TERMINAL="st"
 export LANG=en_US.UTF-8
 export HISTCONTROL=ingnoreboth
 
@@ -55,11 +56,12 @@ alias d='cd ~/Downloads'
 alias D='cd ~/documents'
 alias e='cd /etc'
 alias dmr='dmenu_run'
-alias vdwm='cd ~/suckless/dwm && vim config.h'
-alias vdm='cd ~/suckless/dmenu && vim config.h'
-alias vst='cd ~/suckless/st && vim config.h'
+alias vdwm='cd ~/.local/src/dwm && vim config.def.h'
+alias vdm='cd ~/.local/src/dmenu && vim config.def.h'
+alias vst='cd ~/.local/src/st && vim config.def.h'
 alias dangit='sudo "$BASH" -c "$(history -p !!)"'  # eqivalent to sudo !!
 alias pk='sudo pkill'
 alias bashrc='vim ~/.bashrc'
+alias svgpng='inkscape --export-type="png"'
 alias nasbox='ssh timelord@192.168.0.19'
 
