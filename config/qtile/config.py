@@ -12,9 +12,9 @@ from typing import List  # noqa: F401
 
 # Autostart script from ~/.config/qtile/autostart.sh
 @hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
+def start_once():
+    home = os.path.expanduser('~/')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 mod = "mod4"
 mod1 = "mod1"
@@ -100,6 +100,8 @@ keys = [
     Key([mod1], "f", lazy.spawn("st -e vifm"), desc="launch vifm"),
     Key([mod1], "w", lazy.spawn("brave-browser"), desc="launch brave-browser"),
     Key([mod1], "e", lazy.spawn("geany"), desc="launch geany"),
+    Key([mod], "y", lazy.spawn("scrot"), desc="take screenshot"),
+    Key([mod], "s", lazy.spawn("xmenu.sh && scrot"), desc="launch xmenu"),
 
 ]
 
@@ -185,7 +187,7 @@ layouts = [
 
 colors =  [
 
-        ["#282a2e", "#282a2e"], # color 0
+        ["#1c1c1c", "#1c1c1c"], # color 0
         ["#373b41", "#373b41"], # color 1
         ["#c5c8c6", "#c5c8c6"], # color 2
         ["#a54242", "#a54242"], # color 3
@@ -213,6 +215,14 @@ screens = [
                     background=colors[3],
                 ),
 
+                widget.TextBox(
+                    text='  ',
+                    font="Ubuntu Nerd Font",
+                    fontsize='18',
+                    background=colors[3],
+                    foreground=colors[0],
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("xmenu.sh")},
+                    ),
                 widget.TextBox(
                     text='\ue0be',
                     font="Inconsolata for powerline",
@@ -483,13 +493,40 @@ screens = [
                     background=colors[3],
                 ),
             ],
-        28,
+        36,
             opacity=0.95,
             background=colors[0],
             #margin=[8,2,0,2]
             ),
        ),
     ]
+
+def window_to_prev_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+
+def window_to_next_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+
+def window_to_previous_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i != 0:
+        group = qtile.screens[i - 1].group.name
+        qtile.current_window.togroup(group)
+
+def window_to_next_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i + 1 != len(qtile.screens):
+        group = qtile.screens[i + 1].group.name
+        qtile.current_window.togroup(group)
+
+def switch_screens(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    group = qtile.screens[i - 1].group
+    qtile.current_screen.set_group(group)
 
 # Drag floating layouts.
 mouse = [

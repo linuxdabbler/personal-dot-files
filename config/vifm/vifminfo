@@ -1,0 +1,446 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'D
+	/home/mike/Documents/
+	..
+1623195786
+'H
+	/home/mike/
+	..
+1623117246
+'b
+	/home/mike/bin/
+	..
+1623117246
+'c
+	/home/mike/.config
+	..
+1623195786
+'d
+	/home/mike/Downloads/
+	..
+1623195786
+'e
+	/etc/
+	..
+1623195786
+'h
+	/home/mike/
+	..
+1623196090
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/mike/EXTHD/Media/picpool backup/Mike's Edits
+	DSC_0821.jpg
+1
+d/home/mike/EXTHD/Media/picpool backup
+	NIKON IMPORTS
+43
+d/home/mike/EXTHD/Media/picpool backup/NIKON IMPORTS
+	..
+0
+d/home/mike/EXTHD/Media/picpool backup
+	Photos
+46
+d/home/mike/EXTHD/Media/picpool backup/Photos
+	..
+0
+d/home/mike/EXTHD/Media/picpool backup
+	Pumpkin Patch 10-3-2015
+49
+d/home/mike/EXTHD/Media/picpool backup/Pumpkin Patch 10-3-2015
+	..
+0
+d/home/mike/EXTHD/Media/picpool backup
+	TABS IPHONE PICS
+54
+d/home/mike/EXTHD/Media/picpool backup/TABS IPHONE PICS
+	..
+0
+d/home/mike/EXTHD/Media/picpool backup
+	Tab's albums
+55
+d/home/mike/EXTHD/Media/picpool backup/Tab's albums
+	..
+0
+d/home/mike/EXTHD/Media/picpool backup
+	Tab's iPhone Pics
+56
+d/home/mike/EXTHD/Media/picpool backup/Tab's iPhone Pics
+	..
+0
+d/home/mike/EXTHD/Media/picpool backup
+	pics from sanyo
+34
+d/home/mike/EXTHD/Media
+	scripts
+18
+d/home/mike/EXTHD/Media/scripts
+	graphics
+9
+d/home/mike/EXTHD/Media/scripts/graphics
+	amd-gpu.sh
+1
+d/home/mike/EXTHD/Media/scripts
+	alternate-installers
+2
+d/home/mike/EXTHD/Media/scripts/alternate-installers
+	flats.sh
+1
+d/home/mike/EXTHD/Media/scripts
+	icons
+10
+d/home/mike/EXTHD/Media/scripts/icons
+	deepin-icons.sh
+1
+d/home/mike/EXTHD/Media/scripts
+	phone
+13
+d/home/mike/EXTHD/Media/scripts/phone
+	..
+0
+d/home/mike/EXTHD/Media/scripts
+	themes
+20
+d/home/mike/EXTHD/Media/scripts/themes
+	adapta-theme.sh
+1
+d/home/mike/EXTHD/Media/scripts
+	themes
+20
+d/home/mike/EXTHD/Media
+	LD
+6
+d/home/mike/EXTHD
+	Media
+2
+d/home/mike
+	Videos
+11
+d/home/mike/.config/nvim
+	..
+0
+d/home/mike/.config
+	nvim
+11
+d/home/mike/.config/nvim
+	..
+0
+d/home/mike/.config
+	nvim
+11
+d/home/mike
+	..
+0
+d/home
+	mike
+2
+d/home/mike
+	LD
+6
+d/home/mike/LD
+	Devuan-customization-images
+1
+d/home/mike/LD/Devuan-customization-images
+	LD-icon-transparent.png
+1
+d/home/mike/.config/nvim
+	..
+0
+d/home/mike/.config
+	nvim
+11
+d/home/mike/.config/nvim
+	..
+0
+d/home/mike/.config
+	nvim
+11
+d/home/mike/.config/nvim
+	..
+0
+d/home/mike/.config
+	nvim
+11
+d/home/mike
+	..
+0
+d/home
+	mike
+2
+d/home/mike
+	Public
+9
+d/home/mike/Public
+	..
+0
+d/home/mike
+	Public
+9
+d/home/mike/Public
+	..
+0
+d/home/mike
+	fonts
+14
+d/home/mike/fonts
+	Cousine
+4
+d/home/mike
+	fonts
+14
+d/home/mike/fonts
+	Cousine
+4
+d/home/mike
+	fonts
+14
+d/home
+	mike
+2
+d/home/mike
+	fonts
+14
+d/home/mike/fonts
+	DroidSansMonoSlashed
+9
+d/home/mike
+	Downloads
+3
+d/home/mike/Downloads
+	pia-linux-2.9-06393.run
+2
+d/home/mike
+	Downloads
+3
+d/home/mike/Downloads
+	pia-linux-2.9-06393.run
+2
+d/home/mike
+	Extra
+5
+d/home/mike/Extra
+	..
+0
+d/home/mike
+	Virtual-Machines
+13
+d/home/mike/Virtual-Machines
+	..
+0
+d/home/mike
+	dwm
+15
+d/home/mike/dwm
+	..
+0
+d/home/mike
+	fonts
+16
+d/home/mike/fonts
+	DroidSansMonoSlashed
+9
+d/home/mike
+	EXTHD
+14
+d/home/mike/EXTHD
+	Media
+3
+d/home/mike
+	.local
+5
+d/home/mike/.local
+	src
+4
+d/home/mike/.local/src
+	qtile
+2
+d/home/mike/.local/src/qtile
+	libqtile
+5
+d/home/mike/.local/src/qtile/libqtile
+	backend
+1
+d/home/mike/.local/src/qtile
+	libqtile
+5
+d/home/mike/.local/src
+	qtile
+2
+d/home/mike/.local
+	src
+4
+d/home/mike
+	.local
+5
+d/home/mike/.local
+	src
+4
+d/home/mike/.local/src
+	terminal-fetchers
+5
+d/home/mike/.local/src/terminal-fetchers
+	debian-fetch-icons
+7
+d/home/mike/.local/src
+	terminal-fetchers
+5
+d/home/mike/.local
+	bin
+1
+d/home/mike/.local/bin
+	debian-fetch
+9
+d/home/mike/.local
+	bin
+1
+d/home/mike
+	.local
+5
+d/home
+	mike
+2
+d/home/mike
+	.config
+2
+d/home/mike/.config
+	nvim
+15
+d/home/mike/.config/nvim
+	init.vim
+2
+d/home/mike/.config
+	nvim
+17
+d/home/mike
+	Downloads
+3
+d/home/mike/Downloads
+	pia-linux-2.9-06393.run
+2
+d/home/mike
+	LD
+7
+d/home/mike/LD
+	OS
+7
+d/home/mike/LD/OS
+	debian-live-testing-amd64-lxde.iso
+10
+d/home/mike/LD
+	completed-videos
+12
+d
+
+# Right window history (oldest to newest):
+D/home/mike
+	personal-dot-files
+14
+D/home/mike/personal-dot-files
+	config
+1
+D/home/mike
+	.config
+2
+D/home/mike/.config
+	qtile
+20
+D/home/mike/.config/qtile
+	icons
+2
+D/home/mike/.config/qtile/icons
+	layout-treetab.png
+4
+D/home/mike/.config/qtile
+	icons
+2
+D/home/mike/.config
+	qtile
+20
+D/home/mike
+	.config
+2
+D/home
+	mike
+2
+D/home/mike
+	.config
+2
+D/home/mike/.config
+	qtile
+20
+D/home/mike
+	.config
+2
+D/home/mike/.config
+	qtile
+24
+D
+
+# Command line history (oldest to newest):
+:colorscheme astrell
+:colorscheme darkdesert
+:colorscheme desert
+:colorscheme dwmlight
+:colorscheme g80
+:colorscheme lucius
+:colorscheme iceberg
+:colorscheme matrix
+:colorscheme mc-like
+:colorscheme molokai
+:colorscheme near-default
+:colorscheme onedark
+:colorscheme palenight
+:colorscheme papercolor-dark
+:colorscheme papercolor-light
+:colorscheme ph
+:colorscheme reicheltd-light
+:colorscheme sandy
+:h
+:mark h
+:mkdir icons
+:wq
+:colorscheme solarized-dark
+:colorscheme gruvbox
+:colorscheme dracula
+:q
+:color
+:colorscheme
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+pCruella.2021
+pCruella.2021.mkv
+pArmy.of.the.Dead.2021.mkv
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].0
+]F
+s0
