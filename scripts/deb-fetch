@@ -1,0 +1,87 @@
+#!/bin/sh
+
+user="${USER}@"
+hostname="${HOSTNAME:-${hostname:-$(hostname)}}"
+host="$(cat /sys/devices/virtual/dmi/id/product_name)"
+OS="$(cat /etc/os-release | grep PRETTY_NAME | sed 's/PRETTY_NAME=//' | sed 's/"//g')"
+#Desktop="${XDG_CURRENT_DESKTOP}"
+Kernel="$(uname -sr)"
+Uptime="$(uptime -p | sed 's/up //')"
+Packages="$(dpkg -l | grep -c ^i)"
+Shell="$(basename "$SHELL")"
+RAM="$(free -h | grep Mem: | awk '{print $3 "/" $2}')"
+
+if [ -z "${WM}" ]; then
+	if [ "${XDG_CURRENT_DESKTOP}" ]; then
+		envtype='Desktop'
+		WM="${XDG_CURRENT_DESKTOP}"
+	elif [ "${DESKTOP_SESSION}" ]; then
+		envtype='Desktop'
+		WM="${DESKTOP_SESSION}"
+	else
+		envtype='WM'
+		WM="$(tail -n 1 "${HOME}/.xinitrc" | cut -d ' ' -f 2)"
+	fi
+else
+	envtype='WM'
+
+fi
+
+# COLORS
+c1="\e[31m" # Red
+c2="\e[32m" # Light Green
+c3="\e[33m" # Yellow
+c4="\e[34m" # Calm Blue
+c5="\e[35m" # Violet
+c6="\e[36m" # Arch Blue
+c7="\e[37m" # White
+c8="\e[38m" # Sky Blue
+c9="\e[39m" # Light Grey
+c10="\e[40m" # Dark Grey
+c20="\e[0m" # Normal
+
+# An Error echo Wrapper
+err0r()
+{
+	echo >&2 "$(tput bold; tput setaf 1)[-] ERROR: ${*}$(tput sgr0)"
+	echo ""
+	exit 86
+}
+
+
+# A Warning echo wrapper
+warn ()
+{
+	echo >&2 "$(tput bold; tput setaf 3)[!] WARNING: ${*}$)tput sgr0)"
+	echo ""
+}
+
+
+
+# A Message echo Wrapper
+msg ()
+{
+	echo "$(tput bold; tput setaf 2)[+] ${*}$(tput sgr0)"
+}
+
+
+
+echo ""
+echo ${c1} '          _,met$$$$$gg.        '
+echo ${c1}'       ,g$$$$$$$$$$$$$$$P.     '   ${c4}$user${c20}$hostname
+echo ${c1}'     ,g$$P""       """Y$$.".   '   ${c4}OS:  ${c20}$OS
+echo ${c1}'    ,$$P"              `$$$."  '   ${c4}host:  ${c20}$host
+echo ${c1}'   ,$$P       ,ggs.     `$$b:  '   ${c4}Kernel:  ${c20}$Kernel
+echo ${c1}'  `d$$"     ,$P""   .    $$$   '   ${c4}Uptime:  ${c20}$Uptime
+echo ${c1}'   $$P      d$"     ,    $$P   '   ${c4}Packages:  ${c20}$Packages
+echo ${c1}'   $$:      $$.   -    ,d$$"   '   ${c4}RAM:  ${c20}$RAM
+echo ${c1}'   $$\;      Y$b._   _,d$P     '
+echo ${c1}'   Y$$.    `.`"Y$$$$P""        '
+echo ${c1}'   `$$b      "-.__             '
+echo ${c1}'    `Y$$                       '
+echo ${c1}'     `Y$$.                     '
+echo ${c1}'       `$$b.                   '
+echo ${c1}'         `Y$$b.                '
+echo ${c1}'            `"Y$b._            '
+echo ${c1}'                `""""          '
+echo ${c20}""
